@@ -1,6 +1,4 @@
-
-
-
+#taken from the author's solution
 import math
 import turtle
 bob = turtle.Turtle()
