@@ -1,3 +1,4 @@
+#question-1
 def do_two_times(f):
     f()
     f()
@@ -25,7 +26,7 @@ def two_by_two_grid():
     column1()
 two_by_two_grid()
 
-
+#question-2
 def twotimes(f):
     f()
     f()
