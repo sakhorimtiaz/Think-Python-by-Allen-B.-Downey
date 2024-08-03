@@ -109,7 +109,7 @@ def fibonacci(n):
         return known[n]
     res=fibonacci(n-1)+fibonacci(n-2)
     known[n]=res
-    print(known)     #changes the dictionary
+    print(known)     #changes the dictionary, keep in memory 
     return known[n]   #returns the last one
 #print(fibonacci(5))
 
