@@ -1,9 +1,10 @@
 import string
-def word_to_frequency_dict(book):
+def word_to_frequency_dict(book,encoding="utf8"):
     with open(book) as file:
         d = {}
         t = []
         processing = False
+        translation_table = str.maketrans("", "", string.punctuation + string.whitespace)
         for line in file:
             if "*** START OF THE PROJECT GUTENBERG EBOOK PETER PETTIGREW'S PRISONER ***" in line:
                 # starts after this line, we dont need to write the full line,
@@ -13,8 +14,8 @@ def word_to_frequency_dict(book):
             if processing:
                 words = line.split()
                 for word in words:
-                    cleaned_word = word.strip(string.punctuation)
-                    cleaned_lower_words = cleaned_word.lower()
+                    cleaned_word = word.translate(translation_table)
+                    cleaned_lower_words = cleaned_word.lower().encode("utf8")
                     """if the word is '---', then cleaned_lower_words will be an empty string, leading '' in the output
                     an empty string is false, thus we can get rid of it."""
                     if cleaned_lower_words:
@@ -52,7 +53,7 @@ def most_frequently_used_word(sorted_f):
             n += 1
 
 if __name__=="__main__":
-    d = word_to_frequency_dict("C:\\Users\\THINKPAD\\Downloads\\test1.txt")
+    d = word_to_frequency_dict("C:\\Users\\THINKPAD\\Downloads\\test1.txt",encoding="utf8")
     f = frequency_to_word_dict(d)
     sorted_f = sorted_freq_to_word_dict(f)
     most_frequently_used_word(sorted_f)
