@@ -1,8 +1,9 @@
 import string
-with open("C:\\Users\\THINKPAD\\Downloads\\test1.txt") as file:
+with open("C:\\Users\\THINKPAD\\Downloads\\test1.txt",encoding="utf8") as file:
     d={}
     t=[]
     processing=False
+    translation_table=str.maketrans("","",string.punctuation+string.whitespace)
     for line in file:
         if "*** START OF THE PROJECT GUTENBERG EBOOK PETER PETTIGREW'S PRISONER ***" in line:
             #starts after this line, we dont need to write the full line,
@@ -12,8 +13,8 @@ with open("C:\\Users\\THINKPAD\\Downloads\\test1.txt") as file:
         if processing:
             words = line.split()
             for word in words:
-                cleaned_word = word.strip(string.punctuation)
-                cleaned_lower_words = cleaned_word.lower()
+                cleaned_word = word.translate(translation_table)
+                cleaned_lower_words = cleaned_word.lower().encode("utf8")
                 """if the word is '---', then cleaned_lower_words will be an empty string, leading '' in the output
                 an empty string is false, thus we can get rid of it."""
                 if cleaned_lower_words:
