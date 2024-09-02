@@ -1,10 +1,10 @@
 import string
-def word_to_frequency_dict(book,encoding="utf8"):
-    with open(book) as file:
+def word_to_frequency_dict():
+    with open("C:\\Users\\THINKPAD\\Downloads\\test1.txt",encoding="utf8") as file:
         d = {}
         t = []
         processing = False
-        translation_table = str.maketrans("", "", string.punctuation + string.whitespace)
+        translation_table=str.maketrans("","",string.punctuation+string.whitespace)
         for line in file:
             if "*** START OF THE PROJECT GUTENBERG EBOOK PETER PETTIGREW'S PRISONER ***" in line:
                 # starts after this line, we dont need to write the full line,
@@ -26,9 +26,14 @@ def word_to_frequency_dict(book,encoding="utf8"):
         #print("different words: ", len(d))
         #print("total words", len(t))
         return d
+d=word_to_frequency_dict()
+#p=list(d.values())
+#q=sorted(p,reverse=True)
+#print(q)
+#print(len(q))
+#print(q[:20])
 
-
-def frequency_to_word_dict(d):
+def frequency_to_word_dict():
     f = {}
     for key, value in d.items():
         if value not in f:
@@ -37,23 +42,19 @@ def frequency_to_word_dict(d):
             f[value].append(key)
     #print(f)
     return f
+f=frequency_to_word_dict()
 
-
-def sorted_freq_to_word_dict(f):
+def sorted_freq_to_word_dict():
     sorted_f = dict(sorted(f.items(), reverse=True))
     #print(sorted_f)
     return sorted_f
+sorted_f=sorted_freq_to_word_dict()
 
-
-def most_frequently_used_word(sorted_f):
+def most_frequently_used_word():
     n = 1
     for key, value in sorted_f.items():
         if n <= 20:
-            print(f"The word/words {value} is found {key} times in the book")
+            print(f"the word/words {value} is found {key} times in the book")
             n += 1
 
-if __name__=="__main__":
-    d = word_to_frequency_dict("C:\\Users\\THINKPAD\\Downloads\\test1.txt",encoding="utf8")
-    f = frequency_to_word_dict(d)
-    sorted_f = sorted_freq_to_word_dict(f)
-    most_frequently_used_word(sorted_f)
+most_frequently_used_word()
