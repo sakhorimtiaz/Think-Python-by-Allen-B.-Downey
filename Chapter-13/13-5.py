@@ -45,26 +45,16 @@ def words_not_in_word_dict():
 words_not_in_word_dict=words_not_in_word_dict()
 
 #now we need to find the typo
-#at first we need to decode the words
-def decode_word_dict(word_dict):
-	decoded_dict = {}
-	for key in word_dict:
-		decoded_dict[key.decode("utf8")] = None
-	return decoded_dict
-decoded_word_dict=decode_word_dict(word_dict)
-
-#now typo
 import difflib
-def find_typo_suggestion(word,decoded_word_dict):
-	suggestions=difflib.get_close_matches(word,decoded_word_dict.keys(),n=1,cutoff=0.8)
+def find_typo_suggestion(word,word_dict):
+	suggestions=difflib.get_close_matches(word,word_dict.keys(),n=1,cutoff=0.8)
 	return suggestions
 
-def identify_typos(words_not_in_word_dict,decoded_word_dict):
+def identify_typos(words_not_in_word_dict,word_dict):
 	typos=[]
 	for word in words_not_in_word_dict:
-		suggestions=find_typo_suggestion(word.decode("utf8"),decoded_word_dict)
+		suggestions=find_typo_suggestion(word,word_dict)
 		if suggestions:
 			typos.append((word,suggestions[0]))
 	return typos
-print(len(identify_typos(words_not_in_word_dict,decoded_word_dict)))
-#print(len(decoded_word_dict))
+print(identify_typos(words_not_in_word_dict,word_dict))
