@@ -42,7 +42,7 @@ def words_not_in_word_dict():
             t.append(key)
     #print(len(t))
     return t
-words_not_in_word_dict=words_not_in_word_dict()
+words_not_found_in_word_dict=words_not_in_word_dict()
 
 #now we need to find the typo
 import difflib
@@ -50,11 +50,11 @@ def find_typo_suggestion(word,word_dict):
 	suggestions=difflib.get_close_matches(word,word_dict.keys(),n=1,cutoff=0.8)
 	return suggestions
 
-def identify_typos(words_not_in_word_dict,word_dict):
+def identify_typos(words_not_found_in_word_dict,word_dict):
 	typos=[]
-	for word in words_not_in_word_dict:
+	for word in words_not_found_in_word_dict:
 		suggestions=find_typo_suggestion(word,word_dict)
 		if suggestions:
 			typos.append((word,suggestions[0]))
 	return typos
-print(identify_typos(words_not_in_word_dict,word_dict))
+print(identify_typos(words_not_found_in_word_dict,word_dict))
