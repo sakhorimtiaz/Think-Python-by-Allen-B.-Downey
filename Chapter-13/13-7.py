@@ -48,10 +48,12 @@ random_n=random_number(cumsum_list)
 
 def random_word():
     index=bisect.bisect(cumsum_list,random_n)
-    res=all_words[index]
+    res=all_words[index].decode()
     return res
 print(random_n)
 print(random_word())
+
+
 #this process is not asked, but I did anyway.
 import random
 import string
@@ -82,3 +84,16 @@ print(n)
 r=random.randint(1,n)
 print(r)
 print(h[r-1])
+
+"""If you need weighted random selections (where some words are more likely to be chosen based on their frequency), the original solution is more appropriate. It provides a way to select words with probabilities proportional to their frequency in the text.
+
+Original Solution Breakdown for Weighted Random Selection
+Word Frequency Calculation:
+Words are read from the file and their frequencies are counted.
+This step is crucial for determining the likelihood of each word being chosen.
+Cumulative Frequency Calculation:
+The cumulative frequency list is created to facilitate weighted random selection.
+Each entry in this list represents the sum of frequencies up to that word.
+Random Selection:
+A random number is generated within the range of total frequency.
+bisect is used to find the appropriate index in the cumulative frequency list, which corresponds to a weighted random word selection."""
