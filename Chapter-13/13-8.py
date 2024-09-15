@@ -1,3 +1,4 @@
+Question-1:
 import random
 import string
 def make_word_dict():
@@ -26,7 +27,7 @@ def collection(h,prefix_length):
         prefix=tuple(h[i:i+prefix_length])
         suffix=h[i+prefix_length]
         if prefix not in prefix_suffix_map:
-            prefix_suffix_map[prefix]=[]
+            prefix_suffix_map[prefix]=[] #use set to ignore the repeated words in values, but list will be used for getting the random analysis
         prefix_suffix_map[prefix].append(suffix)
     return prefix_suffix_map
 print(h)
