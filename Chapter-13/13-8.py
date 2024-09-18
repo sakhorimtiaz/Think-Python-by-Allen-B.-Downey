@@ -1,4 +1,4 @@
-#we will not rease punctuation, coz it will play a vital role in the code
+#we will not erase punctuation, bcoz it will play a vital role in the code
 import random
 def make_word_dict(book):
     with open(book) as file:
