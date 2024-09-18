@@ -1,7 +1,7 @@
 #we will not rease punctuation, coz it will play a vital role in the code
 import random
-def make_word_dict():
-    with open("C:\\Users\\THINKPAD\\Downloads\\emma.txt") as file:
+def make_word_dict(book):
+    with open(book) as file:
         t=[]
         #d={}
         process=False
@@ -72,9 +72,13 @@ def generate_random_text(prefix_suffix_map,prefix_length,max_words):
         current_prefix=tuple(generated_words[-prefix_length:]) #current prefix is updated, must be in tuple as before
     return " ".join(generated_words)
 
+if __name__=="__main__":
+    h1 = make_word_dict("C:\\Users\\THINKPAD\\Downloads\\emma.txt")
+    h2 = make_word_dict("C:\\Users\\THINKPAD\\Downloads\\test1.txt")
+    h=h1+h2
+    max_words = 100
+    prefix_length = 5
+    c = collection(h, prefix_length)
+    prefix_suffix_map = probability_list(c)
 
-max_words=50
-prefix_length=100
-c=collection(h,prefix_length)
-prefix_suffix_map=probability_list(c)
-print(generate_random_text(prefix_suffix_map,prefix_length,max_words))
+    print(generate_random_text(prefix_suffix_map, prefix_length, max_words))
