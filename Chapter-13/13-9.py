@@ -1,3 +1,4 @@
+# I have used two methods for slope calculation, but using linear-regression is more accurate
 import string
 import math
 import matplotlib.pyplot as plt #or, from matplotbib import pyplot
