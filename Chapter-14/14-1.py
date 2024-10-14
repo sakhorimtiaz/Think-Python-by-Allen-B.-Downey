@@ -1,3 +1,4 @@
+#the solution given by the author uses less memory,
 def sed(pattern_string,replacement_string,file1,file2):
     try:
         with open(file1, "r") as file1:
