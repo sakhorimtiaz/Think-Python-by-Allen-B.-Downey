@@ -9,8 +9,6 @@ class Point():
         self.x=x
         self.y=y
 
-def diagonal_of_rectangle(box):
-    return math.sqrt(box.width**2+box.height**2)
 class Circle():
     def __init__(self,center,radius):
         self.center=center #center is a point object
