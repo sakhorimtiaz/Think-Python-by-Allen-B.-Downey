@@ -44,6 +44,7 @@ def rect_circle_overlap(circle,box):
     if (box.corner.x <= circle.center.x <= box.corner.x + box.width and
         box.corner.y <= circle.center.y <= box.corner.y + box.height):
         return True
+    # Check if any side intersects the circle
     closest_x = max(x1, min(circle.center.x, x2))
     closest_y = max(y1, min(circle.center.y, y2))
     closest_point=Point(closest_x,closest_y)
