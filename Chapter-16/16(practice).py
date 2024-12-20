@@ -134,3 +134,18 @@ try:
     print_time(add_time_invariants_using_assert(t3, t4))
 except AssertionError as e:
     print(e)
+"""import datetime
+a=datetime.date(1988,10,10)
+b=datetime.time(3,3,3,3)
+c=datetime.datetime(1988,10,10,3,3,3,3,)
+d=datetime.timedelta(3,3,3,3,3,3,3)
+e=datetime.date.today()
+f=datetime.datetime.now()
+g=f.time()
+print(a)
+print(b)
+print(c)
+print(d)
+print(e)
+print(f)
+print(g)"""
